@@ -1,4 +1,4 @@
-import teamImg from '../assets/images/about-team.png'
+import logo from '../assets/images/logo.svg'
 
 const values = [
   {
@@ -57,11 +57,11 @@ export default function About() {
       <section className="bg-white py-16">
         <div className="max-w-content mx-auto px-6">
           <div className="flex flex-col md:flex-row gap-12 items-center">
-            <div className="flex-1">
+            <div className="flex-1 flex items-center justify-center bg-green-light rounded-2xl p-16">
               <img
-                src={teamImg}
-                alt="Tým Green Heaven"
-                className="w-full rounded-2xl object-cover max-h-96"
+                src={logo}
+                alt="Green Heaven"
+                className="w-full max-w-xs"
               />
             </div>
             <div className="flex-1">
@@ -83,6 +83,15 @@ export default function About() {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Under construction banner */}
+      <section className="bg-orange-50 border-y border-orange-200 py-10">
+        <div className="max-w-content mx-auto px-6 text-center">
+          <div className="text-4xl mb-3">🚧</div>
+          <h2 className="text-xl font-bold text-dark mb-2">Stránky jsou ve výstavbě</h2>
+          <p className="text-muted text-sm">Stránky jsou v základní verzi. Brzy přibydou fotky, kontaktní formulář a doplňující informace. Děkujeme za trpělivost!</p>
         </div>
       </section>
 

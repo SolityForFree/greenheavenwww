@@ -8,7 +8,7 @@ const contactInfo = [
       </svg>
     ),
     title: 'Telefon',
-    lines: ['+420 734 464 325', 'Po-Pá 8:00 - 18:00'],
+    lines: ['+420 603 217 594', 'Po-Pá 8:00 - 18:00'],
   },
   {
     icon: (
@@ -27,7 +27,7 @@ const contactInfo = [
       </svg>
     ),
     title: 'Adresa',
-    lines: ['Green Heaven s.r.o.', 'Praha, Česká republika'],
+    lines: ['Green Heaven s.r.o.', 'Hamr 34, 391 81 Val'],
   },
   {
     icon: (
@@ -36,7 +36,7 @@ const contactInfo = [
       </svg>
     ),
     title: 'Provozní doba',
-    lines: ['Pondělí - Pátek: 8:00 - 18:00', 'Sobota: 9:00 - 14:00', 'Neděle: Zavřeno'],
+    lines: ['Pondělí - Pátek: 8:00 - 18:00', 'Sobota - Neděle: Zavřeno'],
   },
 ]
 
@@ -192,7 +192,7 @@ export default function Contact() {
                 ))}
               </div>
 
-              <div className="mt-5 p-4 bg-green-light rounded-2xl">
+              {/* <div className="mt-5 p-4 bg-green-light rounded-2xl">
                 <p className="font-semibold text-dark text-sm mb-1">Máte otázky?</p>
                 <p className="text-muted text-sm mb-2">
                   Podívejte se na naše často kladené dotazy pro rychlé odpovědi.
@@ -200,7 +200,7 @@ export default function Contact() {
                 <a href="#" className="text-green-primary text-sm font-semibold hover:underline">
                   Zobrazit FAQ →
                 </a>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

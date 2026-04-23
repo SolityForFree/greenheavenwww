@@ -35,7 +35,7 @@ const contactCards = [
       </svg>
     ),
     title: 'Telefon',
-    primary: '+420 734 464 325',
+    primary: '+420 603 217 594',
     secondary: 'Po-Pá 8:00 - 18:00',
   },
   {
@@ -56,7 +56,7 @@ const contactCards = [
     ),
     title: 'Provozní doba',
     primary: 'Pondělí - Pátek: 8:00 - 18:00',
-    secondary: 'Sobota: 9:00 - 14:00 · Neděle: Zavřeno',
+    secondary: 'Sobota - Neděle: Zavřeno',
   },
 ]
 

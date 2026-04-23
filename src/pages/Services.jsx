@@ -3,7 +3,7 @@ import oilImg from '../assets/images/service-oil.png'
 import gastroImg from '../assets/images/service-gastro.png'
 
 const oilFeatures = [
-  { title: 'Bezplatné nádoby', desc: 'Poskytujeme vhodné skladovací nádoby bez poplatků' },
+  // { title: 'Bezplatné nádoby', desc: 'Poskytujeme vhodné skladovací nádoby bez poplatků' },
   { title: 'Pravidelný svoz', desc: 'Plánované svozy na základě vašich potřeb' },
   { title: 'Férová kompenzace', desc: 'Vykupujeme váš použitý olej za konkurenční ceny' },
   { title: 'Dokumentace', desc: 'Kompletní dokumentace a certifikáty souladu' },
@@ -86,7 +86,7 @@ export default function Services() {
       </section>
 
       {/* What oils */}
-      <section className="bg-green-light py-14">
+      {/* <section className="bg-green-light py-14">
         <div className="max-w-content mx-auto px-6">
           <h2 className="text-2xl font-bold text-dark text-center mb-8">Jaké oleje přijímáme?</h2>
           <div className="grid md:grid-cols-3 gap-5">
@@ -98,7 +98,7 @@ export default function Services() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Gastro waste */}
       <section className="bg-green-primary py-16">
@@ -146,7 +146,7 @@ export default function Services() {
       </section>
 
       {/* What gastro */}
-      <section className="bg-white py-14">
+      {/* <section className="bg-white py-14">
         <div className="max-w-content mx-auto px-6">
           <h2 className="text-2xl font-bold text-dark text-center mb-8">Jaký gastroodpad přijímáme?</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -158,7 +158,7 @@ export default function Services() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Benefits */}
       <section className="bg-green-light py-16">
@@ -193,7 +193,7 @@ export default function Services() {
               <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
-              <span className="font-medium">+420 734 464 325</span>
+              <span className="font-medium">+420 603 217 594</span>
             </div>
             <div className="flex items-center gap-2">
               <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">

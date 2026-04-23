@@ -58,7 +58,7 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-semibold text-sm mb-4">Kontakt</h4>
             <ul className="space-y-2.5">
-              <li className="text-subtle text-sm">+420 734 464 325</li>
+              <li className="text-subtle text-sm">+420 603 217 594</li>
               <li className="text-subtle text-sm">info@greenheaven.cz</li>
               <li className="text-subtle text-sm">GREEN HEAVEN s. r. o.</li>
               <li className="text-subtle text-sm">Hamr 34, 391 81 Val</li>
