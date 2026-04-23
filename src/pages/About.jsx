@@ -86,15 +86,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Under construction banner */}
-      <section className="bg-orange-50 border-y border-orange-200 py-10">
-        <div className="max-w-content mx-auto px-6 text-center">
-          <div className="text-4xl mb-3">🚧</div>
-          <h2 className="text-xl font-bold text-dark mb-2">Stránky jsou ve výstavbě</h2>
-          <p className="text-muted text-sm">Stránky jsou v základní verzi. Brzy přibydou fotky, kontaktní formulář a doplňující informace. Děkujeme za trpělivost!</p>
-        </div>
-      </section>
-
       {/* Values */}
       {/* <section className="bg-green-light py-14">
         <div className="max-w-content mx-auto px-6">
