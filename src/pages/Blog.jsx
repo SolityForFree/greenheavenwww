@@ -5,7 +5,7 @@ export default function Blog() {
         <div className="text-5xl mb-5">📰</div>
         <h1 className="text-4xl font-bold text-dark mb-4">Blog</h1>
         <p className="text-muted text-lg">
-          Novinky jsou na cestě, první nejspíše bude informace o novém webu!
+          Na novinky se můžete těšit.
         </p>
       </div>
     </section>
