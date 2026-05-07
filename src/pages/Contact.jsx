@@ -100,6 +100,11 @@ export default function Contact() {
                   <div className="text-4xl mb-3">✅</div>
                   <h3 className="font-bold text-dark text-lg mb-2">Zpráva odeslána!</h3>
                   <p className="text-muted text-sm">Ozveme se vám co nejdříve.</p>
+                  <p className="text-muted text-xs mt-3">
+                    Na váš e-mail jsme zaslali potvrzení. Pokud jej nevidíte v doručené poště,
+                    zkontrolujte prosím složku <span className="font-medium text-dark">Spam</span> nebo{' '}
+                    <span className="font-medium text-dark">Hromadná pošta</span>.
+                  </p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
