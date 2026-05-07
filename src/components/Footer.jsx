@@ -44,7 +44,7 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-semibold text-sm mb-4">Služby</h4>
             <ul className="space-y-2.5">
-              {['Výkup použitých olejů', 'Likvidace gastro odpadu', 'Ekologické zpracování', 'Nádoby na odpad'].map((s) => (
+              {['Výkup použitých olejů', 'Likvidace gastro odpadu', 'Biologické čištění odpadních vod', 'Nádoby na odpad'].map((s) => (
                 <li key={s}>
                   <Link to="/sluzby" className="text-subtle text-sm hover:text-white transition-colors">
                     {s}
@@ -59,7 +59,6 @@ export default function Footer() {
             <h4 className="text-white font-semibold text-sm mb-4">Kontakt</h4>
             <ul className="space-y-2.5">
               <li className="text-subtle text-sm">+420 720 871 930</li>
-              <li className="text-subtle text-sm">+420 734 619 995</li>
               <li className="text-subtle text-sm">info@greenheaven.cz</li>
               <li className="text-subtle text-sm">GREEN HEAVEN s. r. o.</li>
               <li className="text-subtle text-sm">Hamr 34, 391 81 Val</li>

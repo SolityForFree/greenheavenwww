@@ -2,10 +2,11 @@ import { Link } from 'react-router-dom'
 import heroBg from '../assets/images/hero-food.png'
 import oilImg from '../assets/images/service-oil.png'
 import gastroImg from '../assets/images/service-gastro.png'
+import cleanOil from '../assets/images/cleaning.jpg'
 
 const serviceCards = [
   {
-    img: oilImg,
+    // img: cleanOil,
     imgAlt: 'Biologické čištění odpadních vod',
     emoji: '💧',
     tag: 'Voda',
@@ -14,7 +15,7 @@ const serviceCards = [
     cta: 'Zjistit více',
   },
   {
-    img: gastroImg,
+    // img: gastroImg,
     imgAlt: 'Svoz gastroodpadů',
     emoji: '♻️',
     tag: 'Gastroodpady',
@@ -62,16 +63,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Under construction banner */}
-      <section className="bg-orange-50 border-y border-orange-200 py-10">
-        <div className="max-w-content mx-auto px-6 text-center">
-          <div className="text-4xl mb-3">🚧</div>
-          <h2 className="text-xl font-bold text-dark mb-2">Stránky jsou ve výstavbě</h2>
-          <p className="text-muted text-sm">Stránky jsou v základní verzi. Brzy přibydou fotky, kontaktní formulář a doplňující informace. Děkujeme za trpělivost!</p>
-        </div>
-      </section>
-
-
       {/* Services */}
       <section className="bg-white py-16">
         <div className="max-w-content mx-auto px-6">
@@ -82,7 +73,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-6">
             {serviceCards.map((card) => (
               <div key={card.tag} className="rounded-2xl overflow-hidden border border-gray-100 shadow-sm flex flex-col">
-                <img src={card.img} alt={card.imgAlt} className="w-full h-52 object-cover" />
+                {/* <img src={card.img} alt={card.imgAlt} className="w-full h-52 object-cover" /> */}
                 <div className="p-6 flex flex-col flex-1">
                   <span className="inline-flex items-center gap-2 text-sm font-semibold text-green-primary bg-green-50 px-3 py-1 rounded-full mb-4 w-fit">
                     <span>{card.emoji}</span>

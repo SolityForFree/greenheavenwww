@@ -55,7 +55,7 @@ const benefits = [
         <path strokeLinecap="round" strokeLinejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064" />
       </svg>
     ),
-    title: 'Ekologické zpracování',
+    title: 'Biologické čištění odpadních vod',
     desc: 'Veškerý odpad zpracováváme v souladu s platnou legislativou ČR a EU.',
   },
 ]
@@ -171,53 +171,53 @@ export default function Services() {
       <section className="bg-green-primary py-16">
         <div className="max-w-content mx-auto px-6">
           <div className="max-w-2xl mx-auto">
-              <span className="text-lime text-sm font-semibold uppercase tracking-wider">
-                Legislativa & analýzy
-              </span>
-              <h2 className="text-3xl font-bold text-white mt-2 mb-6">
-                Legislativní klid a odborné analýzy
-              </h2>
+            <span className="text-lime text-sm font-semibold uppercase tracking-wider">
+              Legislativa & analýzy
+            </span>
+            <h2 className="text-3xl font-bold text-white mt-2 mb-6">
+              Legislativní klid a odborné analýzy
+            </h2>
 
-              <div className="space-y-5">
-                <div className="bg-white/10 rounded-xl p-5">
-                  <div className="flex items-start gap-3">
-                    <span className="text-2xl flex-shrink-0">⚖️</span>
-                    <div>
-                      <div className="font-semibold text-white mb-1">Plnění nařízení vlády č. 401/2015 Sb.</div>
-                      <div className="text-white/75 text-sm leading-relaxed">
-                        Ukazatele a hodnoty přípustného znečištění povrchových vod a odpadních vod,
-                        náležitosti povolení k vypouštění odpadních vod do vod povrchových a do kanalizací
-                        a o citlivých oblastech.
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="bg-white/10 rounded-xl p-5">
-                  <div className="flex items-start gap-3">
-                    <span className="text-2xl flex-shrink-0">🏭</span>
-                    <div>
-                      <div className="font-semibold text-white mb-1">Intenzifikace ČOV</div>
-                      <div className="text-white/75 text-sm leading-relaxed">
-                        Zlepšení parametrů městských a domovních čističek — nitrifikace a optimalizace
-                        biologických procesů.
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="bg-white/10 rounded-xl p-5">
-                  <div className="flex items-start gap-3">
-                    <span className="text-2xl flex-shrink-0">🔬</span>
-                    <div>
-                      <div className="font-semibold text-white mb-1">Analýzy a vzorkování</div>
-                      <div className="text-white/75 text-sm leading-relaxed">
-                        Odběry vzorků v akreditovaných laboratořích pro průběžnou kontrolu emisních limitů.
-                      </div>
+            <div className="space-y-5">
+              <div className="bg-white/10 rounded-xl p-5">
+                <div className="flex items-start gap-3">
+                  <span className="text-2xl flex-shrink-0">⚖️</span>
+                  <div>
+                    <div className="font-semibold text-white mb-1">Plnění nařízení vlády č. 401/2015 Sb.</div>
+                    <div className="text-white/75 text-sm leading-relaxed">
+                      Ukazatele a hodnoty přípustného znečištění povrchových vod a odpadních vod,
+                      náležitosti povolení k vypouštění odpadních vod do vod povrchových a do kanalizací
+                      a o citlivých oblastech.
                     </div>
                   </div>
                 </div>
               </div>
+
+              <div className="bg-white/10 rounded-xl p-5">
+                <div className="flex items-start gap-3">
+                  <span className="text-2xl flex-shrink-0">🏭</span>
+                  <div>
+                    <div className="font-semibold text-white mb-1">Intenzifikace ČOV</div>
+                    <div className="text-white/75 text-sm leading-relaxed">
+                      Zlepšení parametrů městských a domovních čističek — nitrifikace a optimalizace
+                      biologických procesů.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white/10 rounded-xl p-5">
+                <div className="flex items-start gap-3">
+                  <span className="text-2xl flex-shrink-0">🔬</span>
+                  <div>
+                    <div className="font-semibold text-white mb-1">Analýzy a vzorkování</div>
+                    <div className="text-white/75 text-sm leading-relaxed">
+                      Odběry vzorků v akreditovaných laboratořích pro průběžnou kontrolu emisních limitů.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -238,7 +238,7 @@ export default function Services() {
               to="/kontakt"
               className="border border-green-primary text-green-primary font-semibold px-6 py-3 rounded-lg hover:bg-green-primary hover:text-white transition-colors"
             >
-              +420 720 871 930 / +420 734 619 995
+              +420 720 871 930
             </Link>
           </div>
         </div>

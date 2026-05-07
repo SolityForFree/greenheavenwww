@@ -8,7 +8,7 @@ const contactInfo = [
       </svg>
     ),
     title: 'Telefon',
-    lines: ['+420 720 871 930', '+420 734 619 995', 'Po-Pá 8:00 - 18:00'],
+    lines: ['+420 720 871 930', 'Po-Pá 8:00 - 18:00'],
   },
   {
     icon: (
@@ -170,7 +170,7 @@ export default function Contact() {
                       <option value="">Vyberte službu...</option>
                       <option>Výkup použitých olejů</option>
                       <option>Likvidace gastro odpadu</option>
-                      <option>Ekologické zpracování</option>
+                      <option>Biologické čištění odpadních vod</option>
                       <option>Nádoby na odpad</option>
                     </select>
                   </div>
