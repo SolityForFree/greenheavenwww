@@ -45,14 +45,34 @@ export default function Contact() {
     name: '', email: '', phone: '', company: '', service: '', message: '',
   })
   const [sent, setSent] = useState(false)
+  const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
 
   function handleChange(e) {
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }))
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault()
-    setSent(true)
+    setLoading(true)
+    setError('')
+    try {
+      const res = await fetch('/send_mail.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+      const json = await res.json()
+      if (json.success) {
+        setSent(true)
+      } else {
+        setError('Odeslání se nezdařilo. Zkuste to prosím znovu nebo nás kontaktujte telefonicky.')
+      }
+    } catch {
+      setError('Odeslání se nezdařilo. Zkuste to prosím znovu nebo nás kontaktujte telefonicky.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -160,11 +180,15 @@ export default function Contact() {
                       className="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm text-dark placeholder-subtle focus:outline-none focus:border-green-primary focus:ring-1 focus:ring-green-primary resize-none"
                     />
                   </div>
+                  {error && (
+                    <p className="text-red-600 text-sm">{error}</p>
+                  )}
                   <button
                     type="submit"
-                    className="w-full bg-green-primary text-white font-semibold py-3 rounded-lg hover:bg-green-dark transition-colors"
+                    disabled={loading}
+                    className="w-full bg-green-primary text-white font-semibold py-3 rounded-lg hover:bg-green-dark transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
                   >
-                    Odeslat zprávu
+                    {loading ? 'Odesílám...' : 'Odeslat zprávu'}
                   </button>
                 </form>
               )}
