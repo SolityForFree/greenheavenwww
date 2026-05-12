@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import heroBg from '../assets/images/hero-food.png'
 import oilImg from '../assets/images/service-oil.png'
+import barelImg from '../assets/images/service-gastro.png'
 import gastroImg from '../assets/images/service-gastro.png'
 import cleanOil from '../assets/images/cleaning.jpg'
 
@@ -55,7 +56,7 @@ export default function Home() {
           </div>
           <div className="flex-1 flex justify-center">
             <img
-              src={heroBg}
+              src={barelImg}
               alt="Ekologické zpracování oleje"
               className="max-h-80 object-contain rounded-2xl"
             />
