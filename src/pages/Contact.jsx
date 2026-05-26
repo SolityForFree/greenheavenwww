@@ -8,7 +8,7 @@ const contactInfo = [
       </svg>
     ),
     title: 'Telefon',
-    lines: ['+420 720 871 930', 'Po-Pá 8:00 - 18:00'],
+    lines: ['+420 720 871 930', 'Po-Pá 7:00 - 15:00'],
   },
   {
     icon: (
@@ -36,7 +36,7 @@ const contactInfo = [
       </svg>
     ),
     title: 'Provozní doba',
-    lines: ['Pondělí - Pátek: 8:00 - 18:00', 'Sobota - Neděle: Zavřeno'],
+    lines: ['Pondělí - Pátek: 7:00 - 15:00', 'Sobota - Neděle: Zavřeno'],
   },
 ]
 

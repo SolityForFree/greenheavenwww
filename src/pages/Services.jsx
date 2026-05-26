@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import oilImg from '../assets/images/service-oil.png'
-import gastroImg from '../assets/images/service-gastro.png'
+import gastroImg from '../assets/images/gastroodpad_1_small.jpg'
 
 const benefits = [
   {
@@ -205,7 +205,6 @@ export default function Services() {
             <div className="space-y-5">
               <div className="bg-white/10 rounded-xl p-5">
                 <div className="flex items-start gap-3">
-                  <span className="text-2xl flex-shrink-0">⚖️</span>
                   <div>
                     <div className="font-semibold text-white mb-1">Plnění nařízení vlády č. 401/2015 Sb.</div>
                     <div className="text-white/75 text-sm leading-relaxed">
@@ -219,7 +218,6 @@ export default function Services() {
 
               <div className="bg-white/10 rounded-xl p-5">
                 <div className="flex items-start gap-3">
-                  <span className="text-2xl flex-shrink-0">🏭</span>
                   <div>
                     <div className="font-semibold text-white mb-1">Intenzifikace ČOV</div>
                     <div className="text-white/75 text-sm leading-relaxed">
@@ -232,7 +230,6 @@ export default function Services() {
 
               <div className="bg-white/10 rounded-xl p-5">
                 <div className="flex items-start gap-3">
-                  <span className="text-2xl flex-shrink-0">🔬</span>
                   <div>
                     <div className="font-semibold text-white mb-1">Analýzy a vzorkování</div>
                     <div className="text-white/75 text-sm leading-relaxed">

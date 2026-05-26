@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import CookieConsentBanner from './components/CookieConsent'
 import Home from './pages/Home'
 import About from './pages/About'
 import Services from './pages/Services'
@@ -10,6 +11,7 @@ import Blog from './pages/Blog'
 function App() {
   return (
     <BrowserRouter>
+      <CookieConsentBanner />
       <Header />
       <main>
         <Routes>

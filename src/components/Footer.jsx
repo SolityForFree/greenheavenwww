@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { showPreferences } from 'vanilla-cookieconsent'
 import logo from '../assets/images/logo.svg'
 
 export default function Footer() {
@@ -69,13 +70,14 @@ export default function Footer() {
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-6">
           <p className="text-subtle text-sm">© 2026 Green Heaven. Všechna práva vyhrazena.</p>
-          {/* <div className="flex gap-6">
-            {['Zásady ochrany osobních údajů', 'Obchodní podmínky', 'GDPR'].map((l) => (
-              <a key={l} href="#" className="text-subtle text-sm hover:text-white transition-colors">
-                {l}
-              </a>
-            ))}
-          </div> */}
+          <div className="flex gap-6">
+            <button
+              onClick={showPreferences}
+              className="text-subtle text-sm hover:text-white transition-colors cursor-pointer"
+            >
+              Nastavení cookies
+            </button>
+          </div>
         </div>
       </div>
     </footer>
