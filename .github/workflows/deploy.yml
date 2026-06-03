@@ -1,9 +1,9 @@
-name: Build & Deploy to FTP
+name: Build & Deploy to FTP (lftp)
 
 on:
   push:
     branches:
-      - main # Change to your target branch if needed
+      - main
 
 jobs:
   build-and-deploy:
@@ -17,31 +17,34 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm # Change to 'yarn' or 'pnpm' if you use a different package manager
+          cache: npm
 
       - name: Install dependencies
-        run: npm ci # Change to 'yarn install --frozen-lockfile' or 'pnpm install --frozen-lockfile' if needed
+        run: npm ci
 
       - name: Build project
-        run: npm run build # Vite outputs to ./dist by default
+        run: npm run build
         env:
-          # Add your environment variables here if needed, e.g.:
-          # VITE_API_URL: ${{ secrets.VITE_API_URL }}
           NODE_ENV: production
+          # VITE_API_URL: ${{ secrets.VITE_API_URL }}
 
-      - name: Upload dist to FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_SERVER }} # e.g. ftp.yourdomain.com
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          port: ${{ secrets.FTP_PORT || 21 }} # 21 for FTP, 22 for SFTP
-          local-dir: ./dist/ # Vite build output folder
-          server-dir: ${{ secrets.FTP_REMOTE_DIR }} # e.g. /public_html/ or /www/
-          # Optional settings:
-          # protocol: ftps                          # Uncomment for FTPS (recommended over plain FTP)
-          # dry-run: true                           # Uncomment to test without uploading
-          # exclude: |                              # Uncomment to exclude files
-          #   **/.git*
-          #   **/.git*/**
-          #   **/node_modules/**
+      - name: Install lftp
+        run: sudo apt-get install -y lftp
+
+      - name: Deploy to FTP via lftp
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          FTP_REMOTE_DIR: ${{ secrets.FTP_REMOTE_DIR }}
+        run: |
+          lftp -c "
+            set ftp:ssl-allow no;
+            set ftp:passive-mode yes;
+            set net:timeout 60;
+            set net:max-retries 5;
+            set net:reconnect-interval-base 5;
+            open ftp://$FTP_USERNAME:$FTP_PASSWORD@$FTP_SERVER;
+            mirror --reverse --delete --verbose ./dist/ $FTP_REMOTE_DIR;
+            bye
+          "
