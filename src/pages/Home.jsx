@@ -1,4 +1,28 @@
 import { Link } from 'react-router-dom'
+import SeoHead from '../components/SeoHead'
+
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'Green Heaven s.r.o.',
+  url: 'https://www.greenheaven.cz',
+  telephone: '+420720871930',
+  email: 'info@greenheaven.cz',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Hamr 34',
+    addressLocality: 'Val',
+    postalCode: '391 81',
+    addressCountry: 'CZ',
+  },
+  description: 'Likvidace gastroodpadů, výkup použitých olejů a biologické čištění odpadních vod pro potravinářské provozy, jídelny a obce.',
+  areaServed: [
+    'Jihočeský kraj',
+    'Plzeňský kraj',
+    'Kraj Vysočina',
+    'Jihomoravský kraj',
+  ],
+}
 import heroBg from '../assets/images/hero-food.png'
 import oilImg from '../assets/images/service-oil.png'
 import barelImg from '../assets/images/service-gastro.png'
@@ -37,6 +61,11 @@ const serviceCards = [
 export default function Home() {
   return (
     <>
+      <SeoHead
+        description="Likvidace gastroodpadů, výkup použitých olejů a biologické čištění odpadních vod v jižních, jihozápadních a jihovýchodních Čechách. Pomáháme restauracím, jídelnám i obcím plnit emisní limity."
+        path="/"
+        jsonLd={localBusinessSchema}
+      />
       {/* Hero */}
       <section className="bg-green-light">
         <div className="max-w-content mx-auto px-6 py-16 flex flex-col md:flex-row items-center gap-10">
@@ -97,6 +126,38 @@ export default function Home() {
                     {card.cta} →
                   </Link>
                 </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Coverage area */}
+      <section className="bg-green-light py-14">
+        <div className="max-w-content mx-auto px-6 text-center">
+          <h2 className="text-2xl font-bold text-dark mb-3">Oblast působení</h2>
+          <p className="text-body text-base max-w-xl mx-auto mb-10">
+            Poskytujeme služby v jižních, jihozápadních a jihovýchodních Čechách.
+            Neváhejte nás kontaktovat — rádi probereme možnosti i pro vaši lokalitu.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+            {[
+              {
+                region: 'Jižní Čechy',
+                cities: 'České Budějovice, Tábor, Písek, Strakonice, Třeboň, Jindřichův Hradec, Prachatice, Český Krumlov',
+              },
+              {
+                region: 'Jihozápadní Čechy',
+                cities: 'Plzeň, Klatovy, Domažlice, Sušice',
+              },
+              {
+                region: 'Jihovýchodní Čechy',
+                cities: 'Jihlava, Třebíč, Pelhřimov',
+              },
+            ].map(({ region, cities }) => (
+              <div key={region} className="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
+                <h3 className="font-semibold text-dark mb-2">{region}</h3>
+                <p className="text-sm text-muted leading-relaxed">{cities}</p>
               </div>
             ))}
           </div>

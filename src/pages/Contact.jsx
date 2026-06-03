@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import SeoHead from '../components/SeoHead'
 
 const contactInfo = [
   {
@@ -77,6 +78,11 @@ export default function Contact() {
 
   return (
     <>
+      <SeoHead
+        title="Kontakt"
+        description="Kontaktujte Green Heaven – zavolejte na +420 720 871 930 nebo napište na info@greenheaven.cz. Rádi připravíme nabídku na míru pro váš provoz."
+        path="/kontakt"
+      />
       {/* Header */}
       <section className="bg-white py-14 border-b border-gray-100">
         <div className="max-w-content mx-auto px-6 text-center">

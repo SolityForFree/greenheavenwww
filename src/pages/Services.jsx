@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import SeoHead from '../components/SeoHead'
 import oilImg from '../assets/images/service-oil.png'
 import gastroImg from '../assets/images/gastroodpad_1_small.jpg'
 
@@ -22,15 +23,15 @@ const benefits = [
     title: 'Bezstarostný servis',
     desc: 'Zdarma zapůjčíme a nastavíme automatické dávkovací zařízení (peristaltické čerpadlo).',
   },
-  {
-    icon: (
-      <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-      </svg>
-    ),
-    title: 'Legislativní klid',
-    desc: 'Garance dodržení emisních limitů dle kanalizačního řádu a norem ČR/EU.',
-  },
+  // {
+  //   icon: (
+  //     <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+  //       <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+  //     </svg>
+  //   ),
+  //   title: 'Legislativní klid',
+  //   desc: 'Garance dodržení emisních limitů dle kanalizačního řádu a norem ČR/EU.',
+  // },
   {
     icon: (
       <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -94,6 +95,11 @@ const gastroItems = [
 export default function Services() {
   return (
     <>
+      <SeoHead
+        title="Služby"
+        description="Svoz gastroodpadů, výkup použitých olejů, BČOV a servis lapačů tuků v jižních, jihozápadních a jihovýchodních Čechách. Řešení pro restaurace, jídelny, školy i průmyslové provozy."
+        path="/sluzby"
+      />
       {/* Page header */}
       <section className="bg-green-light py-14">
         <div className="max-w-content mx-auto px-6 text-center">
@@ -156,7 +162,7 @@ export default function Services() {
                 Mikrobiologické čištění
               </span>
               <h2 className="text-3xl font-bold text-dark mt-2 mb-2">
-                Enzymatický přípravek BILIKUK® „S"
+                Bioenzymatycký přípravek
               </h2>
               <p className="text-green-primary font-semibold text-sm mb-4">Inteligentní síla přírody</p>
               <p className="text-body text-base leading-relaxed mb-8">
@@ -171,7 +177,7 @@ export default function Services() {
                     <div className="text-green-primary flex-shrink-0 mt-0.5">{b.icon}</div>
                     <div>
                       <div className="font-semibold text-dark text-sm mb-0.5">{b.title}</div>
-                      <div className="text-muted text-xs leading-relaxed">{b.desc}</div>
+                      ;;;;;                  <div className="text-muted text-xs leading-relaxed">{b.desc}</div>
                     </div>
                   </div>
                 ))}

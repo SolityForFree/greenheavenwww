@@ -1,4 +1,5 @@
-import logo from '../assets/images/logo.svg'
+import logo from '../assets/images/multiple_cars_in_row.jpg'
+import SeoHead from '../components/SeoHead'
 
 const values = [
   {
@@ -53,15 +54,20 @@ const features = [
 export default function About() {
   return (
     <>
+      <SeoHead
+        title="O nás"
+        description="Jsme Green Heaven – česká firma s dlouholetou zkušeností v oblasti likvidace bio a gastro odpadů a biologického čištění odpadních vod. Poznejte náš příběh a hodnoty."
+        path="/o-nas"
+      />
       {/* Story section */}
       <section className="bg-white py-16">
         <div className="max-w-content mx-auto px-6">
           <div className="flex flex-col md:flex-row gap-12 items-center">
-            <div className="flex-1 flex items-center justify-center bg-green-light rounded-2xl p-16">
+            <div className="flex-1 flex items-center justify-center bg-green-light rounded-2xl">
               <img
                 src={logo}
                 alt="Green Heaven"
-                className="w-full max-w-xs"
+                className="w-full max-w-xl"
               />
             </div>
             <div className="flex-1">
