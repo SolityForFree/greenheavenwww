@@ -28,6 +28,7 @@ import oilImg from '../assets/images/service-oil.png'
 import barelImg from '../assets/images/service-gastro.png'
 import gastroImg from '../assets/images/service-gastro.png'
 import cleanOil from '../assets/images/cleaning.jpg'
+import frontCarImg from '../assets/images/front_car_barrels_kitchen.jpg'
 
 const serviceCards = [
   {
@@ -108,7 +109,7 @@ export default function Home() {
             <h2 className="text-3xl font-bold text-dark mb-3">Služby, které vám usnadní třídění</h2>
             <p className="text-muted text-base">Protože víme, že vám na životním prostředí záleží stejně jako nám</p>
           </div>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-6 mb-10">
             {serviceCards.map((card) => (
               <div key={card.tag} className="rounded-2xl overflow-hidden border border-gray-100 shadow-sm flex flex-col">
                 {/* <img src={card.img} alt={card.imgAlt} className="w-full h-52 object-cover" /> */}
@@ -129,6 +130,11 @@ export default function Home() {
               </div>
             ))}
           </div>
+          <img
+            src={frontCarImg}
+            alt="Vozidla a vybavení Green Heaven pro svoz gastroodpadů"
+            className="w-full rounded-2xl object-cover max-h-72 mb-10"
+          />
         </div>
       </section>
 
