@@ -7,6 +7,7 @@ import About from './pages/About'
 import Services from './pages/Services'
 import Contact from './pages/Contact'
 import Blog from './pages/Blog'
+import BlogPost from './pages/BlogPost'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/sluzby" element={<Services />} />
           <Route path="/kontakt" element={<Contact />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
         </Routes>
       </main>
       <Footer />
