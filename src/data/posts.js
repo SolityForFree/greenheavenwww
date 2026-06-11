@@ -1,6 +1,27 @@
 import cngImg from '../assets/images/2_Foltila - CNG.png'
+import svozoveLinkyImg from '../assets/images/3_pridejte se k nám.webp'
 
 export const posts = [
+  {
+    slug: 'nove-svozove-linky-gastro-provozy',
+    title: 'Otevíráme nové svozové linky pro gastro provozy',
+    date: '2026-06-11',
+    excerpt:
+      'Rozšiřujeme své kapacity a otevíráme nové svozové linky pro restaurace, kuchyně i další gastronomické provozy. Hledáme nové partnery, kteří chtějí řešit gastroodpad spolehlivě a s důrazem na ekologii.',
+    image: svozoveLinkyImg,
+    imageAlt: 'Přidejte se k nám — Green Heaven svoz gastroodpadů',
+    content: [
+      'Rozšiřujeme své kapacity a otevíráme nové svozové linky pro restaurace, kuchyně i další gastronomické provozy. Hledáme nové partnery, kteří chtějí řešit gastroodpad spolehlivě, profesionálně a s důrazem na ekologii.',
+      { type: 'list', items: [
+        'svoz přizpůsobený vašemu harmonogramu',
+        'ekologické zpracování odpadu',
+        'legislativní dokumentace',
+        'individuální přístup ke každému provozu',
+      ]},
+      'Máte gastro provoz nebo víte o někom, kdo hledá spolehlivého partnera pro svoz gastroodpadu? Budeme rádi, když se nám ozvete.',
+      { type: 'cta', label: 'Kontaktujte nás', href: '/kontakt' },
+    ],
+  },
   {
     slug: 'obnova-vozoveho-parku-cng-2026',
     title: 'Obnovujeme vozový park pro ještě ekologičtější budoucnost',
