@@ -1,5 +1,5 @@
-import cngImg from '../assets/images/2_Foltila - CNG.png'
-import svozoveLinkyImg from '../assets/images/3_pridejte se k nám.webp'
+import cngImg from '../assets/images/foltila-cng.png'
+import svozoveLinkyImg from '../assets/images/pridejte-se-k-nam.webp'
 
 export const posts = [
   {
