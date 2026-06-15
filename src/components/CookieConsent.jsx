@@ -3,6 +3,7 @@ import * as CookieConsent from 'vanilla-cookieconsent'
 import 'vanilla-cookieconsent/dist/cookieconsent.css'
 
 const LEADY_SRC = 'https://ct.leady.com/3W89p62NocJQ06DS/L.js'
+const ECOMAIL_SRC = '//d70shl7vidtft.cloudfront.net/ecmtr-2.4.2.js'
 
 function loadLeadyScript() {
   if (document.querySelector(`script[src="${LEADY_SRC}"]`)) return
@@ -11,6 +12,26 @@ function loadLeadyScript() {
   s.async = true
   s.src = LEADY_SRC
   document.head.appendChild(s)
+}
+
+function loadEcomailScript() {
+  if (document.querySelector(`script[src="${ECOMAIL_SRC}"]`)) return
+  ;(function (p, l, o, w, i, n, g) {
+    if (!p[i]) {
+      p.GlobalSnowplowNamespace = p.GlobalSnowplowNamespace || []
+      p.GlobalSnowplowNamespace.push(i)
+      p[i] = function () { (p[i].q = p[i].q || []).push(arguments) }
+      p[i].q = p[i].q || []
+      n = l.createElement(o)
+      g = l.getElementsByTagName(o)[0]
+      n.async = 1
+      n.src = w
+      g.parentNode.insertBefore(n, g)
+    }
+  })(window, document, 'script', ECOMAIL_SRC, 'ecotrack')
+  window.ecotrack('newTracker', 'cf', 'd2dpiwfhf3tz0r.cloudfront.net', { appId: 'agrokom' })
+  window.ecotrack('setUserIdFromLocation', 'ecmid')
+  window.ecotrack('trackPageView')
 }
 
 export default function CookieConsentBanner() {
@@ -46,6 +67,7 @@ export default function CookieConsentBanner() {
       onConsent() {
         if (CookieConsent.acceptedCategory('analytics')) {
           loadLeadyScript()
+          loadEcomailScript()
         }
       },
 
@@ -53,6 +75,7 @@ export default function CookieConsentBanner() {
         if (changedCategories.includes('analytics')) {
           if (CookieConsent.acceptedCategory('analytics')) {
             loadLeadyScript()
+            loadEcomailScript()
           }
         }
       },
@@ -64,7 +87,7 @@ export default function CookieConsentBanner() {
             consentModal: {
               title: 'Používáme cookies',
               description:
-                'Tento web používá soubory cookie ke zlepšení svých služeb. Analytické cookies (Leady.cz) nám pomáhají porozumět návštěvnosti stránek. Svůj souhlas můžete kdykoli změnit.',
+                'Tento web používá soubory cookie ke zlepšení svých služeb. Analytické nástroje (Leady.cz, Ecomail) nám pomáhají porozumět návštěvnosti a chování návštěvníků. Svůj souhlas můžete kdykoli změnit.',
               acceptAllBtn: 'Přijmout vše',
               acceptNecessaryBtn: 'Pouze nezbytné',
               showPreferencesBtn: 'Nastavení',
