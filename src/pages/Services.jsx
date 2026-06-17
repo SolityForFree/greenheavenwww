@@ -162,7 +162,7 @@ export default function Services() {
                 Mikrobiologické čištění
               </span>
               <h2 className="text-3xl font-bold text-dark mt-2 mb-2">
-                Bioenzymatycký přípravek
+                Bioenzymatický přípravek
               </h2>
               <p className="text-green-primary font-semibold text-sm mb-4">Inteligentní síla přírody</p>
               <p className="text-body text-base leading-relaxed mb-8">
