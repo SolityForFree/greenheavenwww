@@ -177,7 +177,7 @@ export default function Services() {
                     <div className="text-green-primary flex-shrink-0 mt-0.5">{b.icon}</div>
                     <div>
                       <div className="font-semibold text-dark text-sm mb-0.5">{b.title}</div>
-                      ;;;;;                  <div className="text-muted text-xs leading-relaxed">{b.desc}</div>
+                      <div className="text-muted text-xs leading-relaxed">{b.desc}</div>
                     </div>
                   </div>
                 ))}
