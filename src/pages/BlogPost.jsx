@@ -37,14 +37,6 @@ export default function BlogPost() {
             {post.title}
           </h1>
 
-          {post.image && (
-            <img
-              src={post.image}
-              alt={post.imageAlt}
-              className="w-full rounded-2xl object-cover mb-10"
-            />
-          )}
-
           <div className="space-y-5">
             {post.content.map((block, i) => {
               if (typeof block === 'string') {
@@ -66,6 +58,13 @@ export default function BlogPost() {
                   </ul>
                 )
               }
+              if (block.type === 'quote') {
+                return (
+                  <blockquote key={i} className="border-l-4 border-green-primary pl-5 py-1 my-2">
+                    <p className="text-body text-base leading-relaxed italic">{block.text}</p>
+                  </blockquote>
+                )
+              }
               if (block.type === 'cta') {
                 return (
                   <div key={i} className="pt-2">
@@ -81,6 +80,14 @@ export default function BlogPost() {
               return null
             })}
           </div>
+
+          {post.image && (
+            <img
+              src={post.image}
+              alt={post.imageAlt}
+              className="w-full rounded-2xl object-cover mt-10"
+            />
+          )}
         </div>
       </article>
     </>
