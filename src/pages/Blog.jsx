@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { posts } from '../data/posts'
 import SeoHead from '../components/SeoHead'
@@ -8,6 +9,25 @@ function formatDate(iso) {
     month: 'long',
     year: 'numeric',
   })
+}
+
+function PostImage({ src, alt }) {
+  const [isVertical, setIsVertical] = useState(false)
+
+  return (
+    <div className="w-full h-48 flex items-center justify-center bg-gray-50">
+      <img
+        src={src}
+        alt={alt}
+        onLoad={(e) => setIsVertical(e.target.naturalHeight > e.target.naturalWidth)}
+        className={
+          isVertical
+            ? 'h-full w-auto max-w-[55%] object-contain'
+            : 'w-full h-full object-cover'
+        }
+      />
+    </div>
+  )
 }
 
 export default function Blog() {
@@ -34,13 +54,7 @@ export default function Blog() {
                 to={`/blog/${post.slug}`}
                 className="group rounded-2xl border border-gray-100 shadow-sm overflow-hidden hover:shadow-md transition-shadow flex flex-col"
               >
-                {post.image && (
-                  <img
-                    src={post.image}
-                    alt={post.imageAlt}
-                    className="w-full h-48 object-cover"
-                  />
-                )}
+                {post.image && <PostImage src={post.image} alt={post.imageAlt} />}
                 <div className="p-5 flex flex-col flex-1">
                   <p className="text-xs text-muted mb-2">{formatDate(post.date)}</p>
                   <h2 className="text-base font-bold text-dark leading-snug mb-2 group-hover:text-green-primary transition-colors">
