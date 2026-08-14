@@ -36,6 +36,25 @@ $company = clean($data['company'] ?? '');
 $service = clean($data['service'] ?? '');
 $message = clean($data['message'] ?? '');
 
+// --- spam protection: honeypot field + minimum time-to-submit ---
+// "website" is a hidden field real users never see or fill in; bots that
+// auto-fill every input trip it. "ts" is the timestamp (ms) the form was
+// loaded, sent back on submit so we can reject submissions that arrive
+// implausibly fast for a human to have filled the form.
+$honeypot   = trim($data['website'] ?? '');
+$formLoadedAt = isset($data['ts']) ? (float) $data['ts'] : 0;
+$elapsedMs  = $formLoadedAt > 0 ? (microtime(true) * 1000) - $formLoadedAt : 0;
+$minFillMs  = 2500;
+
+if ($honeypot !== '' || $formLoadedAt <= 0 || $elapsedMs < $minFillMs) {
+    // Pretend success so bots don't learn to adapt; nothing is actually sent.
+    echo json_encode([
+        'success' => true,
+        'notice'  => 'Potvrzovací e-mail byl odeslán. Pokud jej nevidíte v doručené poště, zkontrolujte složku Spam nebo Hromadná pošta.',
+    ]);
+    exit;
+}
+
 if (!$name || !$email || !$phone || !$service) {
     http_response_code(422);
     echo json_encode(['success' => false, 'error' => 'Missing required fields']);

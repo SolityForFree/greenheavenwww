@@ -43,11 +43,12 @@ const contactInfo = [
 
 export default function Contact() {
   const [form, setForm] = useState({
-    name: '', email: '', phone: '', company: '', service: '', message: '',
+    name: '', email: '', phone: '', company: '', service: '', message: '', website: '',
   })
   const [sent, setSent] = useState(false)
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+  const [formLoadedAt] = useState(() => Date.now())
 
   function handleChange(e) {
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }))
@@ -61,7 +62,7 @@ export default function Contact() {
       const res = await fetch('/send_mail.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, ts: formLoadedAt }),
       })
       const json = await res.json()
       if (json.success) {
@@ -114,6 +115,22 @@ export default function Contact() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
+                  {/* Honeypot: hidden from real users, catches bots that auto-fill every field */}
+                  <div
+                    style={{ position: 'absolute', left: '-9999px', top: '-9999px', height: 0, width: 0, overflow: 'hidden' }}
+                    aria-hidden="true"
+                  >
+                    <label htmlFor="website">Nechte prázdné</label>
+                    <input
+                      type="text"
+                      id="website"
+                      name="website"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={form.website}
+                      onChange={handleChange}
+                    />
+                  </div>
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm font-medium text-dark mb-1.5">Celé jméno *</label>

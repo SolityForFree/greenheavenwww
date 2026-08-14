@@ -4,6 +4,9 @@
 
 URL="${1:-https://greenheaven.cz/send_mail.php}"
 
+# ts must look like a form loaded a few seconds ago, or the spam-timing check rejects it
+TS=$(( $(date +%s%3N) - 4000 ))
+
 curl -s -X POST "$URL" \
   -H "Content-Type: application/json" \
   -d '{
@@ -12,5 +15,7 @@ curl -s -X POST "$URL" \
     "phone":   "+420 777 123 456",
     "company": "Testovací Firma s.r.o.",
     "service": "Svoz použitého oleje",
-    "message": "Testovací zpráva z curl skriptu."
+    "message": "Testovací zpráva z curl skriptu.",
+    "website": "",
+    "ts": '"$TS"'
   }' | python3 -m json.tool 2>/dev/null || cat
