@@ -5,6 +5,7 @@ import logo from '../assets/images/logo.svg'
 const navLinks = [
   { to: '/o-nas', label: 'O nás' },
   { to: '/sluzby', label: 'Služby' },
+  { to: '/kde-pusobime', label: 'Oblast působení' },
   { to: '/blog', label: 'Blog' },
   { to: '/kontakt', label: 'Kontakt' },
 ]
