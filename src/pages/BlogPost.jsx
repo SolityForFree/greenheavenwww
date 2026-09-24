@@ -19,7 +19,7 @@ export default function BlogPost() {
   return (
     <>
       <SeoHead
-        title={post.title}
+        title={post.seoTitle ?? post.title}
         description={post.excerpt}
         path={`/blog/${post.slug}`}
       />
@@ -44,6 +44,13 @@ export default function BlogPost() {
                   <p key={i} className="text-body text-base leading-relaxed">
                     {block}
                   </p>
+                )
+              }
+              if (block.type === 'heading') {
+                return (
+                  <h2 key={i} className="text-xl font-bold text-dark pt-3">
+                    {block.text}
+                  </h2>
                 )
               }
               if (block.type === 'list') {

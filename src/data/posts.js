@@ -1,8 +1,37 @@
 import cngImg from '../assets/images/foltila-cng.png'
 import svozoveLinkyImg from '../assets/images/pridejte-se-k-nam.webp'
 import frantaImg from '../assets/images/Franta-2.webp'
+import skolniJidelnaImg from '../assets/images/skolni-jidelna-kucharky.webp'
 
 export const posts = [
+  {
+    slug: 'novy-skolni-rok-ve-skolni-jidelne',
+    title: 'Nový školní rok ve školní jídelně: ať je v něm co nejméně starostí',
+    seoTitle: 'Nový školní rok ve školní jídelně bez zbytečných starostí',
+    date: '2026-09-09',
+    excerpt:
+      'Všem kuchařkám, kuchařům a týmům školních jídelen přejeme klidný školní rok. S částí práce kolem gastroodpadu jim rádi pomůžeme.',
+    image: skolniJidelnaImg,
+    imageAlt: 'Kuchařky ve školní jídelně',
+    content: [
+      'V září se školní jídelny vracejí k plnému provozu. Vaří se, vydává, objednává, hlídají se zásoby i administrativa. Všem, kdo to každý den drží pohromadě, přejeme klidný školní rok – a rádi pomůžeme s částí práce kolem gastroodpadu.',
+      { type: 'heading', text: 'V kuchyni je rušno dávno před obědem' },
+      'Když děti ráno přicházejí do školy, v jídelně už bývá dávno živo. Připravují se suroviny, vaří polévka, kontrolují dodávky a všechno se chystá tak, aby byl oběd včas hotový.',
+      'Samotné vaření je přitom jen část práce. Vedoucí jídelen a jejich týmy řeší také jídelníčky, objednávky, sklad, čistotu provozu, směny a potřebné záznamy. A když se něco zpozdí nebo je někdo nemocný, musí se provoz přesto zvládnout.',
+      'Práce školních kuchařek a kuchařů zůstává často v pozadí. Bez ní by ale běžný školní den jednoduše nefungoval.',
+      { type: 'heading', text: 'Na nový spotřební koš je více času' },
+      'Jedním z témat, která jídelny v poslední době řeší, je nový spotřební koš. Dobrou zprávou je, že jídelny, které zatím vaří podle stávajících pravidel, mohou podle informací Ministerstva školství pokračovat do 31. srpna 2027. Na přípravu změn tedy mají ještě čas.',
+      'Vedle pravidel školního stravování je potřeba myslet také na odpady. Zákon o odpadech požaduje mimo jiné jejich správné zařazení, předání v souladu s pravidly a vedení průběžné evidence. Nejde zrovna o část práce, kterou by člověk chtěl řešit během poledního výdeje. Když je ale svoz nastavený dobře a podklady chodí pravidelně, není nutné se k němu stále vracet.',
+      { type: 'heading', text: 'Použitá nádoba odjede a čistá zůstane' },
+      'Právě s touto částí provozu školním jídelnám pomáháme. Zapůjčíme potřebné množství nádob a domluvíme svoz v intervalu, který odpovídá provozu. Při každé návštěvě odvezeme použité nádoby a místo nich necháme čisté, vymyté a dezinfikované. Funguje to jednoduše: kus za kus.',
+      'Vedeme také průběžnou evidenci předaného odpadu a pravidelně ji posíláme e-mailem. Jídelna tak má údaje uložené a nemusí je zpětně dohledávat. Součástí našich služeb je rovněž výkup použitých potravinářských olejů.',
+      'Svezený gastroodpad předáváme k odbornému zpracování v bioplynové stanici. Místo aby zůstal bez užitku, slouží dál při výrobě bioplynu.',
+      { type: 'heading', text: 'Děkujeme a přejeme klidný školní rok' },
+      'Všem vedoucím jídelen, kuchařkám, kuchařům i ostatním kolegům v provozu děkujeme za práci, kterou každý den odvádějí. Do nového školního roku přejeme co nejméně nečekaných komplikací, dostatek sil a spokojené strávníky.',
+      'A pokud budete chtít upravit četnost svozů, doplnit nádoby nebo probrat evidenci gastroodpadu, ozvěte se nám. Rádi se podíváme na to, co potřebuje právě váš provoz.',
+      { type: 'cta', label: 'Kontaktujte nás', href: '/kontakt' },
+    ],
+  },
   {
     slug: 'franta-doksansky-20-let-na-ceste',
     title: '20 let na cestě: Franta, který najezdil tisíce kilometrů a miloval kontakt s kuchařkami',
