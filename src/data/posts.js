@@ -2,8 +2,44 @@ import cngImg from '../assets/images/foltila-cng.png'
 import svozoveLinkyImg from '../assets/images/pridejte-se-k-nam.webp'
 import frantaImg from '../assets/images/Franta-2.webp'
 import skolniJidelnaImg from '../assets/images/skolni-jidelna-kucharky.webp'
+import romanZelenyImg from '../assets/images/roman-zeleny-ml.webp'
 
 export const posts = [
+  {
+    slug: 'roman-zeleny-ml-rozhovor',
+    title: 'Zbytky z kuchyní mají smysl: rozhovor s Romanem Zeleným ml. o patnácti letech v Greenheaven',
+    seoTitle: 'Roman Zelený ml. o patnácti letech v Greenheaven',
+    date: '2026-10-05',
+    excerpt:
+      'Spolumajitel Greenheaven Roman Zelený ml. v rozhovoru popisuje, jak funguje moderní čištění lapačů tuků pomocí mikrobiologie, a představuje kruh, ve kterém se ze starého chleba stává palivo pro firemní dodávky.',
+    image: romanZelenyImg,
+    imageAlt: 'Roman Zelený ml., spolumajitel Greenheaven',
+    content: [
+      { type: 'quote', text: '„Zbytky z kuchyní mají smysl. Vracíme je zpátky do života v podobě energie," říká Roman Zelený ml.' },
+      'Firma Greenheaven se již patnáct let stará o komplexní nakládání s gastroodpady a odpadními vodami v Jihočeském kraji a na Vysočině. Její spolumajitel Roman Zelený mladší prošel firmou od úplných začátků. V rozhovoru popisuje nejen to, jak funguje moderní čištění lapačů tuků za pomoci mikrobiologie, ale také představuje fascinující kruh, ve kterém se ze starého chleba stává palivo pro firemní dodávky.',
+
+      { type: 'heading', text: 'Romane, ve firmě Greenheaven působíte už patnáct let. Vzpomenete si na moment, kdy jste si uvědomil, že toto je práce, které se chcete naplno věnovat?' },
+      'Vlastně to přišlo velmi přirozeně. Původně jsem vyučený instalatér-topenář a na školu jsem šel spíše s kamarádem. Během studia ale můj otec se svým bratrem, mým strýcem, začali budovat základy dnešní firmy. Koupili první malou dodávku, pár soudků a začali svážet gastroodpad. Tehdy mi došlo, že práce v rodinné firmě a možnost budovat něco společně s nejbližšími má obrovskou budoucnost. Postupem času pro mě začala být klíčová také efektivita, chtěl jsem dělat práci, která má hluboký smysl, a zároveň netrávit veškerý čas v zaměstnání na úkor své rodiny a dětí.',
+
+      { type: 'heading', text: 'Když se podíváme na samotnou činnost Greenheaven, jaké jsou hlavní pilíře vašich služeb?' },
+      'Základem je komplexní servis v oblasti gastroodpadů. Pro zákazníky zajišťujeme odvoz zbytků z kuchyní, ale staráme se také o odpadní vody, tedy konkrétně o splaškové vody, které odcházejí z kuchyňských provozů. S tím úzce souvisí čištění a údržba tukových lapačů. Třetím důležitým pilířem je pak sběr a odvoz použitého kuchyňského oleje z fritéz.',
+
+      { type: 'heading', text: 'Zmínil jste lapače tuků, které musí mít povinně každý gastroprovoz. Proč jsou tyto systémy tak kritické?' },
+      'Lapač tuků zabraňuje tomu, aby se veškerá mastnota z kuchyně dostala do veřejné kanalizace a následně na centrální čistírnu odpadních vod. Pokud je tuků příliš mnoho, čistírny s tím mají obrovské technologické problémy. Bez správné údržby se potrubí ucpává, což pro provozovatele znamená havárii, zápach a nemalé finanční náklady.',
+
+      { type: 'heading', text: 'Vy při údržbě těchto lapačů využíváte speciální mikrobiologii. V čem spočívá její výhoda?' },
+      'Setkali jsme se s provozy, kde lapač nikdo nečistil třeba deset let. Obsah doslova zkameněl a dalo by se na něm bruslit. My lapače nejen pravidelně vyvážíme podle domluveného harmonogramu, ale aplikujeme do nich právě mikrobiologii - specifické bakterie. Ty se dávkují automaticky v noci, kdy je v kuchyni klid a potrubím neprotéká voda. Bakterie průběžně rozkládají tuky v potrubí i v samotném lapači, udržují systém průchodný a zabraňují jeho ztuhnutí. Zákazník se díky našemu programu nemusí o nic starat.',
+
+      { type: 'heading', text: 'Kromě tuků svážíte také použitý olej a zbytky jídla. Zmínil jste, že největší zátěž pro odpadní systémy přichází kolem vánočních svátků...' },
+      'Přesně tak, v televizním zpravodajství je to každoroční téma. Během svátků smaží lidé doma kapry a řízky a použitý olej masivně vylévají do dřezů a toalet. My se snažíme neustále apelovat na to, a to jak u gastroprovozů, tak v domácnostech, aby se olej sbíral odděleně. V restauracích našim klientům poskytujeme speciální sudy, do kterých studený olej slévají, a my jej následně odvážíme k ekologické likvidaci a dalšímu využití.',
+
+      { type: 'heading', text: 'Kde vidíte budoucnost firmy Greenheaven a jaký je váš profesní cíl?' },
+      'Chci, aby si naše firma udržela dobré jméno a zákazníci věděli, že se na nás mohou stoprocentně spolehnout. Mým velkým přáním je, aby si lidé a provozovatelé uvědomili, že zbytky z kuchyní nejsou jen bezcenný odpad, ale surovina, která má další smysl. Vše, co svezeme, končí na kompostárně, kde probíhá další zpracování.',
+
+      { type: 'heading', text: 'Můžete laikovi popsat, jak tento ekologický cyklus ve vašem podání funguje?' },
+      'Rád to vysvětluji na jednoduchém příkladu: Na poli vyroste obilí, ze kterého se upeče chléb. Tento chléb putuje do jídelny, kde se nesní celý a zůstane jako zbytek. Firma Greenheaven tento gastroodpad naloží a odveze na kompostárnu. Tam se z něj v rámci procesů zpracuje mimo jiné zemní plyn a my na tento plyn následně s našimi firemními dodávkami jezdíme. Je to uzavřený, dokonale funkční kruh, který má obrovské množství pozitivních ekologických efektů. A to je to, co mě na mé práci baví nejvíce.',
+    ],
+  },
   {
     slug: 'novy-skolni-rok-ve-skolni-jidelne',
     title: 'Nový školní rok ve školní jídelně: ať je v něm co nejméně starostí',
