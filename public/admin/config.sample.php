@@ -6,6 +6,6 @@
 
 define('DB_HOST', '127.0.0.1'); // 'localhost' makes PHP try a unix socket, which often isn't set up on shared hosting — use the TCP address instead
 define('DB_PORT', 3306);
-define('DB_NAME', '27596_vindex');
-define('DB_USER', '27596_61186');
-define('DB_PASS', 'UH.._45DcPS');
+define('DB_NAME', 'database_name');
+define('DB_USER', 'database_user');
+define('DB_PASS', 'database_password');
