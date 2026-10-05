@@ -1,0 +1,9 @@
+# Defense in depth: config.php and the schema dump are only ever included
+# from PHP, never requested directly — block direct access in case the
+# server is ever misconfigured to serve .php as plain text.
+<FilesMatch "^(config\.php|config\.sample\.php)$">
+  Require all denied
+</FilesMatch>
+<FilesMatch "\.sql$">
+  Require all denied
+</FilesMatch>

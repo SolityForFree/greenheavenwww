@@ -1,0 +1,9 @@
+# Uploaded files are served as static assets only — never executed.
+<IfModule mod_php.c>
+  php_flag engine off
+</IfModule>
+<FilesMatch "\.ph(p[3457]?|t|tml)$">
+  Require all denied
+</FilesMatch>
+Options -ExecCGI -Indexes
+AddHandler default-handler .php
