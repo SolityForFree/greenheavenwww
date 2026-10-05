@@ -310,6 +310,29 @@ a {
   color: var(--subtle);
 }
 
+.rich-editor {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.rich-editor .ql-toolbar.ql-snow {
+  border-color: var(--border);
+  border-radius: 8px 8px 0 0;
+  font-family: inherit;
+}
+
+.rich-editor .ql-container.ql-snow {
+  border-color: var(--border);
+  border-radius: 0 0 8px 8px;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.rich-editor .ql-editor {
+  min-height: 220px;
+}
+
 .checkbox-label {
   flex-direction: row !important;
   align-items: center;

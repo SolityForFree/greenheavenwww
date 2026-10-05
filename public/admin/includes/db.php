@@ -1,7 +1,13 @@
 <?php
 declare(strict_types=1);
 
-require_once __DIR__ . '/../config.php';
+// config.local.php (gitignored, local dev only) overrides config.php
+// (the real production credentials) when present.
+if (file_exists(__DIR__ . '/../config.local.php')) {
+    require_once __DIR__ . '/../config.local.php';
+} else {
+    require_once __DIR__ . '/../config.php';
+}
 
 function db(): PDO
 {

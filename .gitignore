@@ -14,6 +14,7 @@ dist-ssr
 
 # Admin panel secrets and uploads
 public/admin/config.php
+public/admin/config.local.php
 public/admin/uploads/*
 !public/admin/uploads/.htaccess
 !public/admin/uploads/.gitkeep

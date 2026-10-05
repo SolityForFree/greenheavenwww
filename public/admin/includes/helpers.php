@@ -109,6 +109,87 @@ function handle_image_upload(array $file): array
     return ['path' => 'uploads/' . $filename, 'error' => null];
 }
 
+// Tags the rich text editor's toolbar can produce — anything else gets
+// unwrapped (kept as text, tag dropped), never passed through.
+const RICH_TEXT_ALLOWED_TAGS = ['p', 'br', 'strong', 'b', 'em', 'i', 'u', 'h2', 'h3', 'ul', 'ol', 'li', 'blockquote', 'a'];
+
+/**
+ * Sanitizes HTML from the rich text editor down to a small allowlist of
+ * tags, stripping every attribute except a scheme-checked href on <a>.
+ * Never trust editor output as-is — this runs even though only logged-in
+ * admins can submit it, since the content is eventually public-facing.
+ */
+function sanitize_rich_text(string $html): string
+{
+    $html = trim($html);
+    if ($html === '' || $html === '<p><br></p>') {
+        return '';
+    }
+
+    $dom = new DOMDocument();
+    libxml_use_internal_errors(true);
+    // The XML prolog forces UTF-8 parsing; DOMDocument::loadHTML() assumes
+    // ISO-8859-1 otherwise and mangles diacritics.
+    $dom->loadHTML('<?xml encoding="utf-8" ?><div>' . $html . '</div>', LIBXML_NOERROR | LIBXML_NOWARNING);
+    libxml_clear_errors();
+
+    $root = $dom->getElementsByTagName('div')->item(0);
+    if (!$root) {
+        return '';
+    }
+    sanitize_rich_text_node($root, $dom);
+
+    $result = '';
+    foreach (iterator_to_array($root->childNodes) as $child) {
+        $result .= $dom->saveHTML($child);
+    }
+
+    $result = trim($result);
+    return $result === '<p><br></p>' ? '' : $result;
+}
+
+function sanitize_rich_text_node(DOMNode $node, DOMDocument $dom): void
+{
+    foreach (iterator_to_array($node->childNodes) as $child) {
+        if ($child instanceof DOMText) {
+            continue;
+        }
+        if (!($child instanceof DOMElement)) {
+            $node->removeChild($child);
+            continue;
+        }
+
+        sanitize_rich_text_node($child, $dom);
+
+        if (!in_array($child->tagName, RICH_TEXT_ALLOWED_TAGS, true)) {
+            while ($child->firstChild) {
+                $node->insertBefore($child->firstChild, $child);
+            }
+            $node->removeChild($child);
+            continue;
+        }
+
+        foreach (iterator_to_array($child->attributes ?? []) as $attr) {
+            // Quill encodes both bullet and numbered lists as <ol><li data-list="...">
+            // — the attribute is the only thing distinguishing them, so it must
+            // survive sanitizing or every list becomes a numbered one on save.
+            if ($child->tagName === 'li' && $attr->name === 'data-list') {
+                if (!in_array($attr->value, ['bullet', 'ordered'], true)) {
+                    $child->removeAttribute('data-list');
+                }
+                continue;
+            }
+            if ($child->tagName === 'a' && $attr->name === 'href') {
+                if (!preg_match('#^(https?://|mailto:)#i', trim($attr->value))) {
+                    $child->removeAttribute('href');
+                }
+                continue;
+            }
+            $child->removeAttribute($attr->name);
+        }
+    }
+}
+
 function delete_uploaded_image(?string $path): void
 {
     if (!$path) {

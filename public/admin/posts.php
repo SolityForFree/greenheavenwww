@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && post_size_exceeded()) {
     } elseif ($formAction === 'save') {
         $id = isset($_POST['id']) && $_POST['id'] !== '' ? (int) $_POST['id'] : null;
         $title = trim((string) ($_POST['title'] ?? ''));
-        $content = trim((string) ($_POST['content'] ?? ''));
+        $content = sanitize_rich_text((string) ($_POST['content'] ?? ''));
 
         if ($title === '') {
             $errors[] = 'Vyplňte nadpis.';
@@ -117,7 +117,13 @@ $posts = $pdo->query('
     ORDER BY posts.created_at DESC
 ')->fetchAll();
 
-render_header('Příspěvky', 'posts', $currentUser);
+$isEditorView = $action === 'new' || $action === 'edit';
+render_header(
+    'Příspěvky',
+    'posts',
+    $currentUser,
+    $isEditorView ? '<link rel="stylesheet" href="assets/vendor/quill/quill.snow.css">' : ''
+);
 
 foreach ($errors as $error) {
     echo '<p class="form-error">' . e($error) . '</p>';
@@ -139,7 +145,8 @@ if ($action === 'new' || $action === 'edit') :
       </label>
 
       <label>Text
-        <textarea name="content" rows="10" required><?= e($formContent) ?></textarea>
+        <div id="editor" class="rich-editor"></div>
+        <textarea name="content" id="content-field" hidden></textarea>
       </label>
 
       <label>Fotka
@@ -162,6 +169,29 @@ if ($action === 'new' || $action === 'edit') :
       </div>
     </form>
   </section>
+
+  <script src="assets/vendor/quill/quill.js"></script>
+  <script>
+    const quill = new Quill('#editor', {
+      theme: 'snow',
+      modules: {
+        toolbar: [
+          ['bold', 'italic', 'underline'],
+          [{ header: 2 }, { header: 3 }],
+          [{ list: 'ordered' }, { list: 'bullet' }],
+          ['blockquote', 'link'],
+          ['clean'],
+        ],
+      },
+    });
+
+    const contentField = document.getElementById('content-field');
+    quill.root.innerHTML = <?= json_encode($formContent) ?>;
+
+    document.querySelector('.stacked-form').addEventListener('submit', () => {
+      contentField.value = quill.root.innerHTML;
+    });
+  </script>
 <?php else : ?>
   <div class="toolbar">
     <a href="posts.php?action=new" class="btn-primary">+ Nový příspěvek</a>

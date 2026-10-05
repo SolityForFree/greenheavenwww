@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-function render_header(string $title, string $active, array $user): void
+function render_header(string $title, string $active, array $user, string $extraHead = ''): void
 {
     ?><!doctype html>
 <html lang="cs">
@@ -10,6 +10,7 @@ function render_header(string $title, string $active, array $user): void
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title><?= e($title) ?> — Green Heaven Admin</title>
 <link rel="stylesheet" href="assets/admin.css">
+<?= $extraHead ?>
 </head>
 <body>
 <div class="layout">
