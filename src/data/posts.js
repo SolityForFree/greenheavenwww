@@ -11,12 +11,12 @@ export const posts = [
     seoTitle: 'Roman Zelený ml. o patnácti letech v Greenheaven',
     date: '2026-10-05',
     excerpt:
-      'Spolumajitel Greenheaven Roman Zelený ml. v rozhovoru popisuje, jak funguje moderní čištění lapačů tuků pomocí mikrobiologie, a představuje kruh, ve kterém se ze starého chleba stává palivo pro firemní dodávky.',
+      'Roman Zelený ml. v rozhovoru popisuje, jak funguje moderní čištění lapačů tuků pomocí mikrobiologie, a představuje kruh, ve kterém se ze starého chleba stává palivo pro firemní dodávky.',
     image: romanZelenyImg,
-    imageAlt: 'Roman Zelený ml., spolumajitel Greenheaven',
+    imageAlt: 'Roman Zelený ml., vedoucí ve společnosti Greenheaven',
     content: [
       { type: 'quote', text: '„Zbytky z kuchyní mají smysl. Vracíme je zpátky do života v podobě energie," říká Roman Zelený ml.' },
-      'Firma Greenheaven se již patnáct let stará o komplexní nakládání s gastroodpady a odpadními vodami v Jihočeském kraji a na Vysočině. Její spolumajitel Roman Zelený mladší prošel firmou od úplných začátků. V rozhovoru popisuje nejen to, jak funguje moderní čištění lapačů tuků za pomoci mikrobiologie, ale také představuje fascinující kruh, ve kterém se ze starého chleba stává palivo pro firemní dodávky.',
+      'Firma Greenheaven se již patnáct let stará o komplexní nakládání s gastroodpady a odpadními vodami v Jihočeském kraji a na Vysočině. Roman Zelený mladší prošel firmou od úplných začátků. V rozhovoru popisuje nejen to, jak funguje moderní čištění lapačů tuků za pomoci mikrobiologie, ale také představuje fascinující kruh, ve kterém se ze starého chleba stává palivo pro firemní dodávky.',
 
       { type: 'heading', text: 'Romane, ve firmě Greenheaven působíte už patnáct let. Vzpomenete si na moment, kdy jste si uvědomil, že toto je práce, které se chcete naplno věnovat?' },
       'Vlastně to přišlo velmi přirozeně. Původně jsem vyučený instalatér-topenář a na školu jsem šel spíše s kamarádem. Během studia ale můj otec se svým bratrem, mým strýcem, začali budovat základy dnešní firmy. Koupili první malou dodávku, pár soudků a začali svážet gastroodpad. Tehdy mi došlo, že práce v rodinné firmě a možnost budovat něco společně s nejbližšími má obrovskou budoucnost. Postupem času pro mě začala být klíčová také efektivita, chtěl jsem dělat práci, která má hluboký smysl, a zároveň netrávit veškerý čas v zaměstnání na úkor své rodiny a dětí.',
@@ -93,12 +93,14 @@ export const posts = [
     imageAlt: 'Přidejte se k nám — Green Heaven svoz gastroodpadů',
     content: [
       'Rozšiřujeme své kapacity a otevíráme nové svozové linky pro restaurace, kuchyně i další gastronomické provozy. Hledáme nové partnery, kteří chtějí řešit gastroodpad spolehlivě, profesionálně a s důrazem na ekologii.',
-      { type: 'list', items: [
-        'svoz přizpůsobený vašemu harmonogramu',
-        'ekologické zpracování odpadu',
-        'legislativní dokumentace',
-        'individuální přístup ke každému provozu',
-      ]},
+      {
+        type: 'list', items: [
+          'svoz přizpůsobený vašemu harmonogramu',
+          'ekologické zpracování odpadu',
+          'legislativní dokumentace',
+          'individuální přístup ke každému provozu',
+        ]
+      },
       'Máte gastro provoz nebo víte o někom, kdo hledá spolehlivého partnera pro svoz gastroodpadu? Budeme rádi, když se nám ozvete.',
       { type: 'cta', label: 'Kontaktujte nás', href: '/kontakt' },
     ],
