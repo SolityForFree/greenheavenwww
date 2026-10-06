@@ -19,6 +19,7 @@ function render_header(string $title, string $active, array $user, string $extra
     <nav class="sidebar-nav">
       <a href="posts.php" class="<?= $active === 'posts' ? 'active' : '' ?>">Příspěvky</a>
       <a href="users.php" class="<?= $active === 'users' ? 'active' : '' ?>">Uživatelé</a>
+      <a href="settings.php" class="<?= $active === 'settings' ? 'active' : '' ?>">Nastavení</a>
     </nav>
     <div class="sidebar-user">
       <div class="sidebar-user-name"><?= e($user['name']) ?></div>
