@@ -29,5 +29,14 @@ export default defineConfig({
   plugins: [react(), excludeLocalAdminConfig()],
   server: {
     port: 5175,
+    // In production /posts.php is same-origin (same domain as the built
+    // site), so the app just fetches '/posts.php' directly. In local dev
+    // the React app and PHP run as separate servers, so this proxies that
+    // one path to a locally running PHP server — start one with e.g.
+    // `php -S 127.0.0.1:8088 -t public` and adjust the port below if needed.
+    proxy: {
+      '/posts.php': 'http://127.0.0.1:8088',
+      '/admin/uploads': 'http://127.0.0.1:8088', // post images, referenced by posts.php's JSON
+    },
   },
 })

@@ -1,6 +1,5 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { posts } from '../data/posts'
 import SeoHead from '../components/SeoHead'
 
 function formatDate(iso) {
@@ -31,6 +30,18 @@ function PostImage({ src, alt }) {
 }
 
 export default function Blog() {
+  const [posts, setPosts] = useState(null)
+  const [error, setError] = useState(false)
+
+  useEffect(() => {
+    let cancelled = false
+    fetch('/posts.php')
+      .then((res) => (res.ok ? res.json() : Promise.reject(new Error('request failed'))))
+      .then((data) => { if (!cancelled) setPosts(data) })
+      .catch(() => { if (!cancelled) setError(true) })
+    return () => { cancelled = true }
+  }, [])
+
   return (
     <section className="bg-white py-16">
       <SeoHead
@@ -44,7 +55,11 @@ export default function Blog() {
           <p className="text-muted text-base">Novinky a tipy z oblasti ekologického zpracování odpadu</p>
         </div>
 
-        {posts.length === 0 ? (
+        {error ? (
+          <p className="text-center text-muted">Blog se nepodařilo načíst. Zkuste to prosím později.</p>
+        ) : posts === null ? (
+          <p className="text-center text-muted">Načítání…</p>
+        ) : posts.length === 0 ? (
           <p className="text-center text-muted">Na novinky se můžete těšit.</p>
         ) : (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

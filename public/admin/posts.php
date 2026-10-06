@@ -34,10 +34,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && post_size_exceeded()) {
         }
         header('Location: posts.php');
         exit;
+    } elseif ($formAction === 'toggle_published') {
+        $toggleId = (int) ($_POST['id'] ?? 0);
+        $pdo->prepare('UPDATE posts SET published = NOT published WHERE id = ?')->execute([$toggleId]);
+        header('Location: posts.php');
+        exit;
     } elseif ($formAction === 'save') {
         $id = isset($_POST['id']) && $_POST['id'] !== '' ? (int) $_POST['id'] : null;
         $title = trim((string) ($_POST['title'] ?? ''));
+        $slugInput = trim((string) ($_POST['slug'] ?? ''));
         $content = sanitize_rich_text((string) ($_POST['content'] ?? ''));
+        $published = !empty($_POST['published']) ? 1 : 0;
 
         if ($title === '') {
             $errors[] = 'Vyplňte nadpis.';
@@ -74,17 +81,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && post_size_exceeded()) {
                 $imagePath = null;
             }
 
+            $slug = unique_slug($pdo, slugify($slugInput !== '' ? $slugInput : $title), $id);
+
             if ($id === null) {
-                $slug = unique_slug($pdo, slugify($title));
                 $stmt = $pdo->prepare(
-                    'INSERT INTO posts (title, slug, content, image_path, created_by) VALUES (?, ?, ?, ?, ?)'
+                    'INSERT INTO posts (title, slug, content, image_path, published, created_by) VALUES (?, ?, ?, ?, ?, ?)'
                 );
-                $stmt->execute([$title, $slug, $content, $imagePath, $currentUser['id']]);
+                $stmt->execute([$title, $slug, $content, $imagePath, $published, $currentUser['id']]);
             } else {
                 $stmt = $pdo->prepare(
-                    'UPDATE posts SET title = ?, content = ?, image_path = ? WHERE id = ?'
+                    'UPDATE posts SET title = ?, slug = ?, content = ?, image_path = ?, published = ? WHERE id = ?'
                 );
-                $stmt->execute([$title, $content, $imagePath, $id]);
+                $stmt->execute([$title, $slug, $content, $imagePath, $published, $id]);
             }
             header('Location: posts.php');
             exit;
@@ -93,14 +101,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && post_size_exceeded()) {
         $action = $id === null ? 'new' : 'edit';
         $editId = $id;
         $formTitle = $title;
+        $formSlug = $slugInput;
         $formContent = $content;
+        $formPublished = $published;
     }
 }
 
 // --- data for the form being displayed ---
 $editingPost = null;
 if ($action === 'edit' && $editId !== null) {
-    $stmt = $pdo->prepare('SELECT id, title, content, image_path FROM posts WHERE id = ?');
+    $stmt = $pdo->prepare('SELECT id, title, slug, content, image_path, published FROM posts WHERE id = ?');
     $stmt->execute([$editId]);
     $editingPost = $stmt->fetch();
     if (!$editingPost) {
@@ -108,10 +118,12 @@ if ($action === 'edit' && $editId !== null) {
     }
 }
 $formTitle = $formTitle ?? ($editingPost['title'] ?? '');
+$formSlug = $formSlug ?? ($editingPost['slug'] ?? '');
 $formContent = $formContent ?? ($editingPost['content'] ?? '');
+$formPublished = $formPublished ?? ($editingPost ? (bool) $editingPost['published'] : true);
 
 $posts = $pdo->query('
-    SELECT posts.id, posts.title, posts.slug, posts.image_path, posts.created_at, users.name AS author_name
+    SELECT posts.id, posts.title, posts.slug, posts.image_path, posts.published, posts.created_at, users.name AS author_name
     FROM posts
     LEFT JOIN users ON users.id = posts.created_by
     ORDER BY posts.created_at DESC
@@ -141,7 +153,12 @@ if ($action === 'new' || $action === 'edit') :
       <?php endif; ?>
 
       <label>Nadpis
-        <input type="text" name="title" value="<?= e($formTitle) ?>" required autofocus>
+        <input type="text" name="title" id="title-field" value="<?= e($formTitle) ?>" required autofocus>
+      </label>
+
+      <label>URL cesta
+        <input type="text" name="slug" id="slug-field" value="<?= e($formSlug) ?>" placeholder="necháte-li prázdné, vygeneruje se z nadpisu">
+        <span class="field-hint">Adresa příspěvku: /blog/<span id="slug-preview"><?= e($formSlug) ?></span></span>
       </label>
 
       <label>Text
@@ -162,6 +179,11 @@ if ($action === 'new' || $action === 'edit') :
           </label>
         </div>
       <?php endif; ?>
+
+      <label class="checkbox-label">
+        <input type="checkbox" name="published" value="1" <?= $formPublished ? 'checked' : '' ?>>
+        Zveřejněno (viditelné na webu)
+      </label>
 
       <div class="form-actions">
         <button type="submit" class="btn-primary">Uložit</button>
@@ -191,6 +213,38 @@ if ($action === 'new' || $action === 'edit') :
     document.querySelector('.stacked-form').addEventListener('submit', () => {
       contentField.value = quill.root.innerHTML;
     });
+
+    // Live "/blog/..." preview, mirroring the slugify() rules the server
+    // applies on save. Auto-fills from the title until the slug field is
+    // edited by hand, then leaves it alone.
+    const titleField = document.getElementById('title-field');
+    const slugField = document.getElementById('slug-field');
+    const slugPreview = document.getElementById('slug-preview');
+    let slugTouched = slugField.value !== '';
+
+    const diacritics = {
+      á:'a', č:'c', ď:'d', é:'e', ě:'e', í:'i', ň:'n', ó:'o', ř:'r', š:'s',
+      ť:'t', ú:'u', ů:'u', ý:'y', ž:'z',
+    };
+    function clientSlugify(text) {
+      return text
+        .toLowerCase()
+        .replace(/[áčďéěíňóřšťúůýž]/g, (ch) => diacritics[ch] ?? ch)
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '');
+    }
+
+    slugPreview.textContent = clientSlugify(slugField.value);
+
+    titleField.addEventListener('input', () => {
+      if (!slugTouched) {
+        slugPreview.textContent = clientSlugify(titleField.value);
+      }
+    });
+    slugField.addEventListener('input', () => {
+      slugTouched = slugField.value !== '';
+      slugPreview.textContent = clientSlugify(slugTouched ? slugField.value : titleField.value);
+    });
   </script>
 <?php else : ?>
   <div class="toolbar">
@@ -218,11 +272,21 @@ if ($action === 'new' || $action === 'edit') :
               <img src="<?= e($p['image_path']) ?>" alt="" class="thumb">
             <?php endif; ?>
           </td>
-          <td><?= e($p['title']) ?></td>
+          <td>
+            <?= e($p['title']) ?>
+            <?php if (!$p['published']): ?><span class="badge badge-muted">skryto</span><?php endif; ?>
+            <div class="row-subtext">/blog/<?= e($p['slug']) ?></div>
+          </td>
           <td><?= e($p['author_name'] ?? '—') ?></td>
           <td><?= e((new DateTime($p['created_at']))->format('j. n. Y')) ?></td>
           <td class="row-actions">
             <a href="posts.php?action=edit&id=<?= (int) $p['id'] ?>">Upravit</a>
+            <form method="post" action="posts.php">
+              <?= csrf_field() ?>
+              <input type="hidden" name="form_action" value="toggle_published">
+              <input type="hidden" name="id" value="<?= (int) $p['id'] ?>">
+              <button type="submit" class="link-button"><?= $p['published'] ? 'Skrýt' : 'Zveřejnit' ?></button>
+            </form>
             <form method="post" action="posts.php" onsubmit="return confirm('Opravdu smazat příspěvek „<?= e(addslashes($p['title'])) ?>“?');">
               <?= csrf_field() ?>
               <input type="hidden" name="form_action" value="delete">

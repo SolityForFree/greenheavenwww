@@ -12,6 +12,27 @@ function e(?string $value): string
 }
 
 /**
+ * Plain-text teaser for the public blog list, derived from the stored
+ * (already-sanitized) rich text HTML — there's no separate excerpt field.
+ */
+function make_excerpt(string $html, int $maxLen = 180): string
+{
+    // Insert a space between adjacent block-level tags first, so e.g.
+    // "</blockquote><p>" doesn't run the two sentences together once stripped.
+    $spaced = str_replace('><', '> <', $html);
+    $text = trim(preg_replace('/\s+/u', ' ', strip_tags($spaced)) ?? '');
+    if (mb_strlen($text, 'UTF-8') <= $maxLen) {
+        return $text;
+    }
+    $truncated = mb_substr($text, 0, $maxLen, 'UTF-8');
+    $lastSpace = mb_strrpos($truncated, ' ', 0, 'UTF-8');
+    if ($lastSpace !== false) {
+        $truncated = mb_substr($truncated, 0, $lastSpace, 'UTF-8');
+    }
+    return rtrim($truncated) . '…';
+}
+
+/**
  * When an uploaded request body is larger than post_max_size, PHP silently
  * empties $_POST and $_FILES entirely before the script runs — this detects
  * that case so we can show an accurate error instead of a confusing one

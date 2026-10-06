@@ -42,9 +42,14 @@ function migrate(PDO $pdo): void
         slug VARCHAR(255) NOT NULL UNIQUE,
         content MEDIUMTEXT NOT NULL,
         image_path VARCHAR(255) NULL,
+        published TINYINT(1) NOT NULL DEFAULT 1,
         created_by INT UNSIGNED NULL,
         created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
         updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
         CONSTRAINT fk_posts_created_by FOREIGN KEY (created_by) REFERENCES users(id) ON DELETE SET NULL
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci');
+
+    // Table already existed from before `published` was added — MariaDB
+    // supports IF NOT EXISTS on ADD COLUMN, so this is a safe no-op once applied.
+    $pdo->exec('ALTER TABLE posts ADD COLUMN IF NOT EXISTS published TINYINT(1) NOT NULL DEFAULT 1 AFTER image_path');
 }
