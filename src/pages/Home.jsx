@@ -24,26 +24,13 @@ const localBusinessSchema = {
   ],
 }
 import heroBg from '../assets/images/hero-food.png'
+import heroLoadingImg from '../assets/images/hero-loading.jpg'
 import oilImg from '../assets/images/service-oil.png'
-import barelImg from '../assets/images/service-gastro.png'
 import gastroImg from '../assets/images/service-gastro.png'
 import cleanOil from '../assets/images/cleaning.jpg'
 import frontCarImg from '../assets/images/front_car_barrels_kitchen.jpg'
 
 const serviceCards = [
-  {
-    // img: cleanOil,
-    imgAlt: 'Biologické čištění odpadních vod',
-    emoji: (
-      <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 2C12 2 5 10 5 14a7 7 0 0014 0c0-4-7-12-7-12z" />
-      </svg>
-    ),
-    tag: 'Voda',
-    title: 'Biologické čištění odpadních vod',
-    desc: 'BČOV pro školy, školní jídelny, obce, průmysl, ale i rodinné domy či chalupy. Biologické čištění odpadních vod pomocí enzymů a servis lapačů tuků.',
-    cta: 'Zjistit více',
-  },
   {
     // img: gastroImg,
     imgAlt: 'Svoz gastroodpadů',
@@ -57,6 +44,19 @@ const serviceCards = [
     desc: 'Zajišťujeme likvidaci gastroodpadu a použitých olejů. Svozové plány, pronájem nádob, legislativní dokumentace.',
     cta: 'Zjistit více',
   },
+  {
+    // img: cleanOil,
+    imgAlt: 'Biologické čištění odpadních vod',
+    emoji: (
+      <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 2C12 2 5 10 5 14a7 7 0 0014 0c0-4-7-12-7-12z" />
+      </svg>
+    ),
+    tag: 'Voda',
+    title: 'Biologické čištění odpadních vod',
+    desc: 'BČOV pro školy, školní jídelny, obce, průmysl, ale i rodinné domy či chalupy. Biologické čištění odpadních vod pomocí enzymů a servis lapačů tuků.',
+    cta: 'Zjistit více',
+  },
 ]
 
 export default function Home() {
@@ -68,14 +68,23 @@ export default function Home() {
         jsonLd={localBusinessSchema}
       />
       {/* Hero */}
-      <section className="bg-green-light">
-        <div className="max-w-content mx-auto px-6 py-16 flex flex-col md:flex-row items-center gap-10">
-          <div className="flex-1 max-w-lg">
-            <h1 className="text-4xl md:text-5xl font-bold text-dark leading-tight mb-5">
-              Komplexní péče o odpadní vody a likvidaci bio a gastro odpadů
+      <section className="relative bg-dark overflow-hidden">
+        <div className="absolute inset-0 lg:left-[30%]">
+          <img
+            src={heroLoadingImg}
+            alt="Pracovník Green Heaven nakládá sudy s bio a gastro odpadem do vozu"
+            className="w-full h-full object-cover object-[42%_center] lg:object-[center_30%]"
+            fetchPriority="high"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 via-45% to-transparent to-75% lg:bg-gradient-to-r lg:from-dark lg:via-dark/40 lg:via-20% lg:to-transparent lg:to-40%" />
+        </div>
+        <div className="relative max-w-content mx-auto px-6 min-h-[40rem] md:min-h-[46rem] flex items-end pt-72 pb-12 lg:min-h-[36rem] lg:items-center lg:py-24">
+          <div className="max-w-lg">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight mb-5">
+              Likvidace bio a gastro odpadů a komplexní péče o odpadní vody
             </h1>
-            <p className="text-body text-base leading-relaxed mb-8">
-              Pomáháme potravinářským provozům, jídelnám i městským ČOV plnit emisní limity a legislativní standardy pomocí moderních technologií a mikrobiologických kultur.
+            <p className="text-white/90 text-base leading-relaxed mb-8">
+              Zajišťujeme svoz a likvidaci gastroodpadů a použitých olejů pro restaurace, jídelny i potravinářské provozy. Postaráme se také o čištění odpadních vod a servis lapačů tuků.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link
@@ -86,18 +95,11 @@ export default function Home() {
               </Link>
               <Link
                 to="/kontakt"
-                className="border border-green-primary text-green-primary font-semibold px-6 py-3 rounded-lg hover:bg-green-primary hover:text-white transition-colors"
+                className="border border-white text-white font-semibold px-6 py-3 rounded-lg hover:bg-white hover:text-dark transition-colors"
               >
                 Nezávazná konzultace
               </Link>
             </div>
-          </div>
-          <div className="flex-1 flex justify-center">
-            <img
-              src={barelImg}
-              alt="Ekologické zpracování oleje"
-              className="max-h-[27rem] object-contain rounded-2xl"
-            />
           </div>
         </div>
       </section>
