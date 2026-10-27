@@ -24,7 +24,7 @@ const localBusinessSchema = {
   ],
 }
 import heroBg from '../assets/images/hero-food.png'
-import heroFleetImg from '../assets/images/hero-fleet.jpg'
+import heroLoadingImg from '../assets/images/hero-loading.jpg'
 import oilImg from '../assets/images/service-oil.png'
 import gastroImg from '../assets/images/service-gastro.png'
 import cleanOil from '../assets/images/cleaning.jpg'
@@ -68,22 +68,22 @@ export default function Home() {
         jsonLd={localBusinessSchema}
       />
       {/* Hero */}
-      <section className="relative bg-green-light overflow-hidden">
-        <div className="relative h-64 sm:h-80 md:h-96 lg:absolute lg:inset-y-0 lg:right-0 lg:h-auto lg:w-[62%]">
+      <section className="relative bg-dark overflow-hidden">
+        <div className="absolute inset-0 lg:left-[30%]">
           <img
-            src={heroFleetImg}
-            alt="Vozový park Green Heaven pro svoz bio a gastro odpadů"
-            className="w-full h-full object-cover object-[25%_center]"
+            src={heroLoadingImg}
+            alt="Pracovník Green Heaven nakládá sudy s bio a gastro odpadem do vozu"
+            className="w-full h-full object-cover object-[42%_center] lg:object-[center_30%]"
             fetchPriority="high"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-green-light via-green-light/10 to-transparent lg:bg-gradient-to-r lg:from-green-light lg:via-green-light/50 lg:to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 via-45% to-transparent to-75% lg:bg-gradient-to-r lg:from-dark lg:via-dark/40 lg:via-20% lg:to-transparent lg:to-40%" />
         </div>
-        <div className="relative max-w-content mx-auto px-6 -mt-8 pb-14 lg:mt-0 lg:py-28">
+        <div className="relative max-w-content mx-auto px-6 min-h-[40rem] md:min-h-[46rem] flex items-end pt-72 pb-12 lg:min-h-[36rem] lg:items-center lg:py-24">
           <div className="max-w-lg">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-dark leading-tight mb-5">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight mb-5">
               Likvidace bio a gastro odpadů a komplexní péče o odpadní vody
             </h1>
-            <p className="text-body text-base leading-relaxed mb-8">
+            <p className="text-white/90 text-base leading-relaxed mb-8">
               Pomáháme potravinářským provozům, jídelnám i městským ČOV plnit emisní limity a legislativní standardy pomocí moderních technologií a mikrobiologických kultur.
             </p>
             <div className="flex flex-wrap gap-3">
@@ -95,7 +95,7 @@ export default function Home() {
               </Link>
               <Link
                 to="/kontakt"
-                className="border border-green-primary text-green-primary bg-green-light/80 font-semibold px-6 py-3 rounded-lg hover:bg-green-primary hover:text-white transition-colors"
+                className="border border-white text-white font-semibold px-6 py-3 rounded-lg hover:bg-white hover:text-dark transition-colors"
               >
                 Nezávazná konzultace
               </Link>
