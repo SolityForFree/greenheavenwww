@@ -32,19 +32,6 @@ import frontCarImg from '../assets/images/front_car_barrels_kitchen.jpg'
 
 const serviceCards = [
   {
-    // img: cleanOil,
-    imgAlt: 'Biologické čištění odpadních vod',
-    emoji: (
-      <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 2C12 2 5 10 5 14a7 7 0 0014 0c0-4-7-12-7-12z" />
-      </svg>
-    ),
-    tag: 'Voda',
-    title: 'Biologické čištění odpadních vod',
-    desc: 'BČOV pro školy, školní jídelny, obce, průmysl, ale i rodinné domy či chalupy. Biologické čištění odpadních vod pomocí enzymů a servis lapačů tuků.',
-    cta: 'Zjistit více',
-  },
-  {
     // img: gastroImg,
     imgAlt: 'Svoz gastroodpadů',
     emoji: (
@@ -55,6 +42,19 @@ const serviceCards = [
     tag: 'Gastroodpady',
     title: 'Gastroodpady & použité oleje',
     desc: 'Zajišťujeme likvidaci gastroodpadu a použitých olejů. Svozové plány, pronájem nádob, legislativní dokumentace.',
+    cta: 'Zjistit více',
+  },
+  {
+    // img: cleanOil,
+    imgAlt: 'Biologické čištění odpadních vod',
+    emoji: (
+      <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 2C12 2 5 10 5 14a7 7 0 0014 0c0-4-7-12-7-12z" />
+      </svg>
+    ),
+    tag: 'Voda',
+    title: 'Biologické čištění odpadních vod',
+    desc: 'BČOV pro školy, školní jídelny, obce, průmysl, ale i rodinné domy či chalupy. Biologické čištění odpadních vod pomocí enzymů a servis lapačů tuků.',
     cta: 'Zjistit více',
   },
 ]
@@ -84,7 +84,7 @@ export default function Home() {
               Likvidace bio a gastro odpadů a komplexní péče o odpadní vody
             </h1>
             <p className="text-white/90 text-base leading-relaxed mb-8">
-              Pomáháme potravinářským provozům, jídelnám i městským ČOV plnit emisní limity a legislativní standardy pomocí moderních technologií a mikrobiologických kultur.
+              Zajišťujeme svoz a likvidaci gastroodpadů a použitých olejů pro restaurace, jídelny i potravinářské provozy. Postaráme se také o čištění odpadních vod a servis lapačů tuků.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link
